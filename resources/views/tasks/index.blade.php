@@ -11,6 +11,10 @@
             @endforeach
         </ul>
     @endif
-
+    
+    
+    <div>
+        <a href="/tasks/create">新規登録</a>
+    </div>
 
 @endsection
