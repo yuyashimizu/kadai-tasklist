@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatusToTasksTable extends Migration
+class AddForeignKeyUserId extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,8 @@ class AddStatusToTasksTable extends Migration
     public function up()
     {
         Schema::table('tasks', function (Blueprint $table) {
-            $table->string('status',10);
+            // 外部キー制約
+            $table->foreign('user_id', 'foreign_key_user_id')->references('id')->on('users');
         });
     }
 
@@ -25,7 +26,7 @@ class AddStatusToTasksTable extends Migration
     public function down()
     {
         Schema::table('tasks', function (Blueprint $table) {
-         $table->dropColumn('status');
+            $table->dropForeign('foreign_key_user_id');
         });
     }
 }
